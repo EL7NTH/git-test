@@ -1,4 +1,3 @@
 # git-test
 
-My first GitHub repo!
-Test
+April 05 - ReadMe
