@@ -1,59 +1,64 @@
-let currentOperand = "";
-let previousOperand = "";
-let operation = undefined;
+let currentInput = "";
+let operation = null;
+let previousInput = "";
 
 function appendNumber(number) {
-  if (number === "." && currentOperand.includes(".")) return;
-  currentOperand += number;
+  currentInput += number;
   updateDisplay();
 }
 
-function chooseOperation(op) {
-  if (currentOperand === "") return;
-  if (previousOperand !== "") calculate();
+function setOperation(op) {
+  if (currentInput === "") return;
+  if (operation !== null) calculate();
   operation = op;
-  previousOperand = currentOperand;
-  currentOperand = "";
-  updateDisplay();
+  previousInput = currentInput;
+  currentInput = "";
 }
 
 function calculate() {
+  if (operation === null || currentInput === "") return;
   let result;
-  const prev = parseFloat(previousOperand);
-  const curr = parseFloat(currentOperand);
-  if (isNaN(prev) || isNaN(curr)) return;
+  const prev = parseFloat(previousInput);
+  const current = parseFloat(currentInput);
+
+  if (isNaN(prev) || isNaN(current)) return;
 
   switch (operation) {
     case "+":
-      result = prev + curr;
+      result = prev + current;
       break;
     case "-":
-      result = prev - curr;
+      result = prev - current;
       break;
     case "*":
-      result = prev * curr;
+      result = prev * current;
       break;
     case "/":
-      result = prev / curr;
+      result = current === 0 ? "Error" : prev / current;
       break;
     default:
       return;
   }
 
-  currentOperand = result;
-  operation = undefined;
-  previousOperand = "";
+  currentInput = result.toString();
+  operation = null;
+  previousInput = "";
+  updateDisplay();
+}
+
+function clearResult() {
+  currentInput = "";
+  previousInput = "";
+  operation = null;
+  updateDisplay();
+}
+
+function deleteLast() {
+  currentInput = currentInput.slice(0, -1);
   updateDisplay();
 }
 
 function updateDisplay() {
-  document.getElementById("display").value =
-    currentOperand || previousOperand || "0";
-}
-
-function clearDisplay() {
-  currentOperand = "";
-  previousOperand = "";
-  operation = undefined;
-  updateDisplay();
+  const resultField = document.getElementById("result");
+  resultField.value = currentInput || "0";
 }

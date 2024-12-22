@@ -1,39 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Calculator</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #calculator {
+            display: inline-block;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #result {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 10px;
+            text-align: right;
+            font-size: 20px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 22%;
+            height: 50px;
+            margin: 5px 1%;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        button:active {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 <body>
-  <div class="calculator">
-    <input type="text" id="display" disabled />
-    <div class="buttons">
-      <button onclick="appendNumber('7')">7</button>
-      <button onclick="appendNumber('8')">8</button>
-      <button onclick="appendNumber('9')">9</button>
-      <button onclick="chooseOperation('/')">/</button>
-      
-      <button onclick="appendNumber('4')">4</button>
-      <button onclick="appendNumber('5')">5</button>
-      <button onclick="appendNumber('6')">6</button>
-      <button onclick="chooseOperation('*')">*</button>
-      
-      <button onclick="appendNumber('1')">1</button>
-      <button onclick="appendNumber('2')">2</button>
-      <button onclick="appendNumber('3')">3</button>
-      <button onclick="chooseOperation('-')">-</button>
-      
-      <button onclick="appendNumber('0')">0</button>
-      <button onclick="appendNumber('.')">.</button>
-      <button onclick="calculate()">=</button>
-      <button onclick="chooseOperation('+')">+</button>
-      
-      <button onclick="clearDisplay()" class="clear">C</button>
+    <div id="calculator">
+        <input type="text" id="result" disabled>
+        <div>
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button onclick="setOperation('/')">÷</button>
+        </div>
+        <div>
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button onclick="setOperation('*')">×</button>
+        </div>
+        <div>
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button onclick="setOperation('-')">−</button>
+        </div>
+        <div>
+            <button onclick="appendNumber('0')">0</button>
+            <button onclick="appendNumber('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="setOperation('+')">+</button>
+        </div>
+        <div>
+            <button onclick="clearResult()" style="width: 48%;">C</button>
+            <button onclick="deleteLast()" style="width: 48%;">DEL</button>
+        </div>
     </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
