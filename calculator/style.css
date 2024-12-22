@@ -1,65 +1,95 @@
-* {
-    box-sizing: border-box;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#calculator {
+  width: 500px; /* Increased calculator width */
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: scale(1.3); /* Enlarged overall size */
+}
+
+#result {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 20px;
+  text-align: right;
+  font-size: 35px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9fafb;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+button {
+  width: 23%;
+  height: 80px; /* Enlarged buttons */
+  font-size: 28px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.clear {
+  background-color: #ef4444; /* Bright Red */
+  color: #ffffff;
+}
+
+.delete {
+  background-color: #f59e0b; /* Orange */
+  color: #ffffff;
+}
+
+button:not(.clear):not(.delete):not(.equals) {
+  background-color: #e5e7eb; /* Light Gray */
+  color: #000000;
+}
+
+button.equals {
+  background-color: #10b981; /* Green */
+  color: #ffffff;
+}
+
+.zero {
+  flex-grow: 2; /* Makes the 0 button wider */
+  text-align: center;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+  #calculator {
+      width: 90%;
+      transform: scale(1.1);
   }
-  
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-  }
-  
-  .calculator {
-    width: 300px;
-    padding: 20px;
-    background-color: #333;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  #display {
-    width: 100%;
-    padding: 10px;
-    font-size: 18px;
-    text-align: right;
-    border: none;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    background-color: #222;
-    color: white;
-  }
-  
-  .buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-  }
-  
   button {
-    padding: 15px;
-    font-size: 18px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
+      font-size: 24px;
+      height: 70px;
   }
-  
-  button:hover {
-    background-color: #555;
+  #result {
+      font-size: 30px;
+      height: 70px;
   }
-  
-  button:active {
-    background-color: #777;
-  }
-  
-  button:nth-child(4n) {
-    background-color: #f39c12; /* Operator buttons */
-  }
-  
-  .clear {
-    grid-column: span 4;
-    background-color: #e74c3c; /* Clear button */
-  }
+}
